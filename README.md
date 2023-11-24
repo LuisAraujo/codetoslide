@@ -6,6 +6,7 @@ Sistema que gera slide para aula com trecho de códigos e explicações baseadas
 * Gerar slide html
 * Gerar slide PDF
 * Criar modelos
+* Configuração de estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)
 
 EXEMPLO:
 
