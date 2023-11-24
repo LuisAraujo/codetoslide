@@ -16,7 +16,7 @@ Trecho do código submetido.
 def changeState(state):
    mystate = statde
 
-#2-[title='changeState', description='Esta função printa o estado do usuário no console.']
+#2-[title='Exibindo o estado', description='Esta função printa o estado do usuário no console.']
 def printState()
    print('o seu estado é', mystate)
 ```
