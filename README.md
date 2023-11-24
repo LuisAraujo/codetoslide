@@ -1,5 +1,11 @@
 # codeToSlide
-API que gera slide para aula com trecho de códigos e explicações baseadas em comentários.
+Sistema que gera slide para aula com trecho de códigos e explicações baseadas em comentários.
+
+# Funcionalidades
+* Importar código
+* Gerar slide html
+* Gerar slide PDF
+* Criar modelos
 
 EXEMPLO:
 
