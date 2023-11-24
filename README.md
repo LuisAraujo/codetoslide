@@ -11,14 +11,17 @@ EXEMPLO:
 
 Trecho do código submetido.
 
-#1 - Esta função modifica o estado do usuário (state é uma string)
+```
+#1-[title='changeState', description='Esta função modifica o estado do usuário (state é uma string)']
 def changeState(state):
    mystate = statde
 
-#2 - Esta função printa o estado do usuário no console. 
+#2-[title='changeState', description='Esta função printa o estado do usuário no console.']
 def printState()
    print('o seu estado é', mystate)
-   
+```
+
+
 Slide gerado:
 
 
