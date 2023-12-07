@@ -12,7 +12,7 @@ EXEMPLO:
 
 Trecho do código submetido.
 
-```
+```python
 #1-[title='changeState', description='Esta função modifica o estado do usuário (state é uma string)']
 def changeState(state):
    mystate = statde
@@ -24,6 +24,10 @@ def printState()
 
 
 Slide gerado:
+### Slide 1
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/Slide1.jpeg?raw=true)
 
+### Slide 2
+![Slide 2](https://github.com/LuisAraujo/codeToSlide/blob/main/Slide2.jpeg?raw=true)
 
 
