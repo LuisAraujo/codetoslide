@@ -15,86 +15,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 
     <script>hljs.highlightAll();</script>
-    
-    <style>
-        html, body{
-            width: 100%;
-            height: 100%;
-            margin: 0px;
-            padding: 0px;
-        }
-
-        .slide{
-            height: calc(100% - 2px);
-            width: calc(100% - 2px);
-            border: 1px solid #000;
-        }
-
-
-        .title{
-            
-            width: calc(100% - 80px);
-            margin-left: 40px;
-            margin-top: 20px;
-            background-color: rgb(92, 203, 251);
-            color: #000;
-            font-size: 30px;
-            padding: 10px;
-            border-radius: 5px;
-
-        }
-        .container{
-            width: calc(100% - 100px);
-            margin: 50px;
-        }
-        .file{
-            position: relative;
-            top: 10px;
-            left: 5px;
-            background-color: rgb(214, 214, 214);
-            padding: 5px;
-            display: inline;
-            margin-left: 40px;
-            border: 1px solid #393939;
-            border-radius: 5px;
-        }
-
-        .description{
-            font-size: 25px;
-        }
-
-        code{
-            font-size: 20px;
-        }
-
-    </style> 
+    <link href="style_template.css"  rel="stylesheet" />
 
 <body>
     <div class="slide">
-        <div class="file">nomearquivo.c</div>
+       
         <div class="title">Teste Teste </div>
+        <div class="description">
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old     </div>
         <div class="container">
-            <pre><code class="language-html">...</code></pre>
+<pre><code class="language-c">
+#include stdio.h // biblioteca standard de Input/Output 
+main(){
+int j; 
+printf("Digite um valor inteiro e ENTER\n"); 
+scanf("%d", &j); 
+printf("Valor de j e' %d\n", j); 
+}
+</code></pre>
         </div>
+        <div class="file">nomearquivo.c</div>
     </div>
     
     <div class="slide">
-        <div class="file">tete</div>
-        <div class="title">Teste Teste </div>
+        <div class="title">Teste Teste</div>
+        <div class="description">
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old   </div>
         <div class="container">
-            <div class="description">
-                Este codigo faz um coisa que eu nao seu explicar muito bem, mas da certo!
-            </div>
-            <pre><code class="language-c">
+            
+<pre><code class="language-c">
 #include stdio.h // biblioteca standard de Input/Output 
 main(){
-    int j; 
-    printf("Digite um valor inteiro e ENTER\n"); 
-    scanf("%d", &j); 
-    printf("Valor de j e' %d\n", j); 
+int j; 
+printf("Digite um valor inteiro e ENTER\n"); 
+scanf("%d", &j); 
+printf("Valor de j e' %d\n", j); 
 }
-            </code></pre>
+</code></pre>
         </div>
+        <div class="file">nomearquivo.c</div>
     </div>
     
 
