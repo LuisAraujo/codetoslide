@@ -1,6 +1,6 @@
 
 myFiles = [];
-slides = [];
+arrSlides = [];
 btnCreateSlide = document.getElementById("btn-create-slide");
 btnCreateSlide.addEventListener("click", function() {
     console.log(myFiles);
@@ -11,7 +11,7 @@ function readFile(file){
     var reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = function (evt) {
-       console.log(evt.target.result);
+       //console.log(evt.target.result);
        parseText(evt.target.result)
     }
     reader.onerror = function (evt) {
@@ -21,12 +21,26 @@ function readFile(file){
 
 function parseText(text){
     var arr = text.split('\n');
+    page = -1;
+    current_code = "";
+    content_slides = [];
     arr.forEach(element => {
-        if(element[0] == "#"){
-           
+        if((element[0] == "#") && (element[1] == "#")) {
+            page++;
+            line = JSON.parse(element.substring(2));
+            line.code = "";
+            content_slides.push(line);
+
+        }else{
+            content_slides[page].code += element;
         }
     });
 
+    showSlide (content_slides);
+}
+
+function showSlide(content_slides){
+    console.log(content_slides);
 }
 function dataFileDnD() {
     return {
