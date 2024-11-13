@@ -85,3 +85,36 @@ code{
     text-align: center;
 }
 
+
+.cover{
+    font-family: "NotoSans";
+    padding: 10px;
+}
+
+.maintitle{
+    font-family: "NotoSans";
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+.author{
+    margin-top: 10%;
+    text-align: center ;
+}
+
+.institute{
+    text-align: center ;
+}
+
+
+ .course{
+    text-align: center ;
+    color:#aaa;
+}
+

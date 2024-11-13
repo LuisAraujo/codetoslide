@@ -46,9 +46,22 @@ function parseText(namefile, text){
 function showSlide(content_slides){
     console.log(content_slides);
     interfaceLoadfile.style.display = "none";
+
+    var html = '<div class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="logo.png" alt=""></a></div>';
+   
+    var institute = document.getElementById("nameinstitute").value;
+    var course =document.getElementById("namecourse").value;
+    var author =document.getElementById("nameauthor").value;
+    var title = document.getElementById("maintitle").value;
+
+    html += '<div class="institute">Instituto Federal da Bahia</div>';
+    html += '<div class="maintitle">Aula sobre Pardões de Projeto</div>';
+    html += '<div class="author">Luis Gustavo Araujo</div>';
+    html += '<div class="course">Licenciatura em Computação</div></div>';
+    codeslide.innerHTML = html;
+    
     content_slides.forEach(function(element, index) {
-        
-        var html = '<div class="slide"><div class="number-page">'+(index+1)+'</div>';    
+        html = '<div class="slide"><div class="number-page">'+(index+1)+'</div>';    
         html += '<div class="title">'+element[1].title+'</div>';
         html += '<div class="description">'+element[1].description+'</div>';
         html += '<div class="container">';
