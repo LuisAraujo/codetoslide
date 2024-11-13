@@ -13,16 +13,23 @@ src: url("font/NotoSans-VariableFont.ttf") format("truetype")
 
 
 
-html, body{
-    
+html{
     width: 100%;
-    height: 100%;
+    height: 100%; 
+    overflow:auto;
+    margin: 0px;
+    padding: 0px;
+}
+
+body { 
+    height: 100%; 
+    width: 100%;
     margin: 0px;
     padding: 0px;
 }
 
 .slide{
-    height: calc(100% - 2px);
+    height: calc(100% - 2px); 
     width: calc(100% - 2px);
     border: 1px solid #000;
 }
@@ -118,3 +125,33 @@ code{
     color:#aaa;
 }
 
+.btn-controlslide{
+    border: 1px #000 solid;
+    padding: 5px;
+    border-radius: 10px;
+    color: #000;
+    background-color: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    position: fixed;
+    top: 50%;
+}
+#btn-back-slide{
+    opacity: 0.2;
+    left: 10px;
+}
+
+#btn-back-slide:hover{
+    opacity: 1;
+}
+
+#btn-next-slide{
+    opacity: 0.2;
+    right: 10px;
+}
+
+#btn-next-slide:hover{
+    opacity: 1;
+}

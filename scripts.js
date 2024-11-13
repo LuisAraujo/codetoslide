@@ -6,9 +6,18 @@ btnCreateSlide.addEventListener("click", function() {
     console.log(myFiles);
     readFile(myFiles[0])
 });
+var currentSlide = -1;
+var codeslide = document.getElementById("codeslide");
+var interfaceLoadfile = document.getElementById("interface-loadfile");
 
-codeslide= document.getElementById("codeslide");
-interfaceLoadfile = document.getElementById("interface-loadfile");
+btnBackSlide = document.getElementById("btn-back-slide");
+btnNextSlide = document.getElementById("btn-next-slide");
+btnBackSlide.addEventListener("click", function() {
+    backSlide();
+});
+btnNextSlide.addEventListener("click", function() {
+    nextSlide();
+});
 
 function readFile(file){
     console.log(file);
@@ -47,7 +56,7 @@ function showSlide(content_slides){
     console.log(content_slides);
     interfaceLoadfile.style.display = "none";
 
-    var html = '<div class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="logo.png" alt=""></a></div>';
+    var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="logo.png" alt=""></a></div>';
    
     var institute = document.getElementById("nameinstitute").value;
     var course =document.getElementById("namecourse").value;
@@ -59,9 +68,9 @@ function showSlide(content_slides){
     html += '<div class="author">Luis Gustavo Araujo</div>';
     html += '<div class="course">Licenciatura em Computação</div></div>';
     codeslide.innerHTML = html;
-    
+
     content_slides.forEach(function(element, index) {
-        html = '<div class="slide"><div class="number-page">'+(index+1)+'</div>';    
+        html = '<div id="slide-'+(index+1)+'"  class="slide"><div class="number-page">'+(index+1)+'</div>';    
         html += '<div class="title">'+element[1].title+'</div>';
         html += '<div class="description">'+element[1].description+'</div>';
         html += '<div class="container">';
@@ -150,9 +159,23 @@ function dataFileDnD() {
             const files = createFileList([...this.files], [...files_val]);
             this.files = files;
             console.log(this.files[0].text())
-            
         }
         }
     };
 }
 
+
+function nextSlide(){
+    //todo if total slides
+    //todo obter a altura atual do slide
+    currentSlide++;
+    window.scrollTo(0, 144 + 612*currentSlide);
+   
+}
+
+function backSlide(){
+     //todo obter a altura atual do slide
+    if(currentSlide >= 0)
+        currentSlide--;
+    window.scrollTo(0, 144 + 612*currentSlide);
+}
