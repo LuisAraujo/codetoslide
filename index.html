@@ -2,14 +2,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Code2Slide</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="codigo, slide, programção">
-  <meta name="author" content="Luis Araujo">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
- 
+    <meta name="description" content="">
+    <meta name="keywords" content="codigo, slide, programção">
+    <meta name="author" content="Luis Araujo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link href="style_template.css"  rel="stylesheet" />
+
 </style>
 </head>
 <body>
@@ -21,8 +28,6 @@
           <img class="h-8 w-auto" src="" alt="">
         </a>
       </div>
-   
-    
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Setting <span aria-hidden="true">&rarr;</span></a>
       </div>
@@ -35,7 +40,7 @@
     </div>
   </div>
 <!-- component -->
-<div class="bg-white p7 rounded w-9/12 h-2/4 mx-auto">
+<div id="interface-loadfile" class="bg-white p7 rounded w-9/12 h-2/4 mx-auto">
   <div x-data="dataFileDnD()" class="relative h-full flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
       <div x-ref="dnd"
           class="relative h-full flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
@@ -118,12 +123,15 @@
       </template>
   </div>
 
-   <button id="btn-create-slide" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded">
+    <button id="btn-create-slide" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded">
         Criar Slide
     </button>
 </div>
+<div id="codeslide">
 
-   
+
+</div>
+
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <script src="https://unpkg.com/create-file-list"></script>

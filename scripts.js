@@ -7,19 +7,23 @@ btnCreateSlide.addEventListener("click", function() {
     readFile(myFiles[0])
 });
 
+codeslide= document.getElementById("codeslide");
+interfaceLoadfile = document.getElementById("interface-loadfile");
+
 function readFile(file){
+    console.log(file);
     var reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = function (evt) {
        //console.log(evt.target.result);
-       parseText(evt.target.result)
+       parseText(file.name, evt.target.result)
     }
     reader.onerror = function (evt) {
         console.log( "error reading file");
     }
 }
 
-function parseText(text){
+function parseText(namefile, text){
     var arr = text.split('\n');
     page = -1;
     current_code = "";
@@ -29,10 +33,10 @@ function parseText(text){
             page++;
             line = JSON.parse(element.substring(2));
             line.code = "";
-            content_slides.push(line);
+            content_slides.push([namefile, line]);
 
         }else{
-            content_slides[page].code += element;
+            content_slides[page][1].code += element+"\n";
         }
     });
 
@@ -41,7 +45,22 @@ function parseText(text){
 
 function showSlide(content_slides){
     console.log(content_slides);
+    interfaceLoadfile.style.display = "none";
+    content_slides[1].forEach(element => {
+        var html = '<div class="slide"><div class="number-page">2</div>';    
+        html += '<div class="title">'+element.title+'</div>';
+        html += '<div class="description">'+element.description+'</div>';
+        html += '<div class="container">';
+        html+= '<pre><code class="language-py">'+element.code+'</code></pre>';
+        html+= '</div><div class="file">'+content_slides[0][0]+'</div></div>';
+
+        codeslide.innerHTML =  html;
+    });
+
+   hljs.highlightAll();
 }
+
+
 function dataFileDnD() {
     return {
         files: [],
