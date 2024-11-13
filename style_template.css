@@ -5,6 +5,9 @@ src: url("font/NotoSans-VariableFont.ttf") format("truetype")
 
 @media print {
     body {-webkit-print-color-adjust: exact;} 
+    .head, header {display: none;}
+
+
 }
 @media print{@page {size: landscape}}
 

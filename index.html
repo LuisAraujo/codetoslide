@@ -14,7 +14,6 @@
 
     <!-- and it's easy to individually load additional languages -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script>
     <link href="style_template.css"  rel="stylesheet" />
 
 </style>
@@ -25,7 +24,7 @@
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">Your Company</span>
-          <img class="h-8 w-auto" src="" alt="">
+          <img class="h-10 w-auto" src="logo.png" alt="">
         </a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -33,15 +32,33 @@
       </div>
     </nav>   
   </header>
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl lg:mx-0">
-      <h2 class="text-4xl font-bold tracking-tight text-black sm:text-6xl">Code2Slide</h2>
-      <p class="mt-0 mb-6 text-lg leading-8 text-gray-500">A Simple tanslate code to slide. Use comments to create slides for your classes.</p>
+  <div class="head mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto w-full lg:mx-0">
+     <!-- <h2 class="text-4xl font-bold tracking-tight text-black sm:text-6xl">Code2Slide</h2>-->
+      <p class="mt-0 mb-6 text-lg leading-8 text-gray-500">A Simple tanslate code to slide. Use comments to create slides for your classes. Look <a href="doc.html">more</a></p>
     </div>
   </div>
 <!-- component -->
 <div id="interface-loadfile" class="bg-white p7 rounded w-9/12 h-2/4 mx-auto">
-  <div x-data="dataFileDnD()" class="relative h-full flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
+    <div class="w-full p-4 bg-white shadow-md rounded-md">
+        <form class="space-y-4">
+          <div class="flex space-x-4">
+            <div class="w-1/2">
+              <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+              <input type="text" id="title" name="title" placeholder="Title" 
+                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+      
+            <div class="w-1/2">
+              <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
+              <input type="text" id="author" name="author" placeholder="Author" 
+                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+          </div>
+        </form>
+      </div>
+
+  <div x-data="dataFileDnD()" class="relative h-200 flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
       <div x-ref="dnd"
           class="relative h-full flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
           <input accept="*" type="file" multiple
