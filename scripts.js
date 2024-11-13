@@ -46,15 +46,16 @@ function parseText(namefile, text){
 function showSlide(content_slides){
     console.log(content_slides);
     interfaceLoadfile.style.display = "none";
-    content_slides[1].forEach(element => {
-        var html = '<div class="slide"><div class="number-page">2</div>';    
-        html += '<div class="title">'+element.title+'</div>';
-        html += '<div class="description">'+element.description+'</div>';
+    content_slides.forEach(function(element, index) {
+        
+        var html = '<div class="slide"><div class="number-page">'+(index+1)+'</div>';    
+        html += '<div class="title">'+element[1].title+'</div>';
+        html += '<div class="description">'+element[1].description+'</div>';
         html += '<div class="container">';
-        html+= '<pre><code class="language-py">'+element.code+'</code></pre>';
+        html+= '<pre><code class="language-py">'+element[1].code+'</code></pre>';
         html+= '</div><div class="file">'+content_slides[0][0]+'</div></div>';
 
-        codeslide.innerHTML =  html;
+        codeslide.innerHTML =  codeslide.innerHTML+html;
     });
 
    hljs.highlightAll();
