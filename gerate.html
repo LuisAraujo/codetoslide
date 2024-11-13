@@ -1,0 +1,157 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Code2Slide</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="codigo, slide, programção">
+    <meta name="author" content="Luis Araujo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    <link href="style_template.css"  rel="stylesheet" />
+
+</style>
+</head>
+<body>
+  <header class="bg-white">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="#" class="-m-1.5 p-1.5">
+          <span class="sr-only">Your Company</span>
+          <img class="h-10 w-auto" src="logo.png" alt="">
+        </a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Setting <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </nav>   
+  </header>
+  <div class="head mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto w-full lg:mx-0">
+     <!-- <h2 class="text-4xl font-bold tracking-tight text-black sm:text-6xl">Code2Slide</h2>-->
+      <p class="mt-0 mb-6 text-lg leading-8 text-gray-500">A Simple tanslate code to slide. Use comments to create slides for your classes. Look <a href="doc.html">more</a></p>
+    </div>
+  </div>
+<!-- component -->
+<div id="interface-loadfile" class="bg-white p7 rounded w-9/12 h-2/4 mx-auto">
+    <div class="w-full p-4 bg-white shadow-md rounded-md">
+        <form class="space-y-4">
+          <div class="flex space-x-4">
+            <div class="w-1/2">
+              <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+              <input type="text" id="title" name="title" placeholder="Title" 
+                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+      
+            <div class="w-1/2">
+              <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
+              <input type="text" id="author" name="author" placeholder="Author" 
+                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+          </div>
+        </form>
+      </div>
+
+  <div x-data="dataFileDnD()" class="relative h-200 flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
+      <div x-ref="dnd"
+          class="relative h-full flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
+          <input accept="*" type="file" multiple
+              class="absolute inset-0 z-50 w-full p-0 m-0 outline-none opacity-0 cursor-pointer"
+              @change="addFiles($event)"
+              @dragover="$refs.dnd.classList.add('border-blue-400'); $refs.dnd.classList.add('ring-4'); $refs.dnd.classList.add('ring-inset');"
+              @dragleave="$refs.dnd.classList.remove('border-blue-400'); $refs.dnd.classList.remove('ring-4'); $refs.dnd.classList.remove('ring-inset');"
+              @drop="$refs.dnd.classList.remove('border-blue-400'); $refs.dnd.classList.remove('ring-4'); $refs.dnd.classList.remove('ring-inset');"
+              title="" />
+  
+          <div class="flex  h-full flex-col items-center justify-center py-10 text-center">
+              <svg class="w-6 h-6 mr-1 text-current-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <p class="m-0">Drag your files here or click in this area.</p>
+          </div>
+      </div>
+   
+      <template  x-if="files.length > 0">
+          <div class="grid grid-cols-2 gap-4  md:grid-cols-6" @drop.prevent="drop($event)"
+              @dragover.prevent="$event.dataTransfer.dropEffect = 'move'">
+              <template x-for="(_, index) in Array.from({ length: files.length })">
+                  <div class="relative flex flex-col items-center overflow-hidden text-center bg-gray-100 border rounded cursor-move select-none"
+                      style="padding-top: 100%;" @dragstart="dragstart($event)" @dragend="fileDragging = null"
+                      :class="{'border-blue-600': fileDragging == index}" draggable="true" :data-index="index">
+                      <button class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none" type="button" @click="remove(index)">
+                          <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
+                              viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                      </button>
+                      <template x-if="files[index].type.includes('python')">
+                          <svg class="absolute w-12 h-12 text-gray-400  fill-gray-400 transform top-1/2 -translate-y-2/3">
+                            <rect x="10" y="0" width="20" height="40" rx="10" ry="5"/>
+                            <rect x="0" y="10" width="40" height="20" rx="5" ry="10"/>
+                            <circle cx="14.5" cy="5" r="1.85" fill="white"/>
+                            <circle cx="25.5" cy="35" r="1.85" fill="white"/>
+                            <line x1="10" y1="9.5" x2="20" y2="9.5" stroke="white"/>
+                            <line x1="20" y1="30.5" x2="30" y2="30.5" stroke="white"/>
+                            <path d="m 9.5,30 c 0,-10 2.5,-10 10,-10 8.5,0 11,0 11,-10" stroke="white" fill="none"/>
+                        </svg>    
+                      </template>
+                      <template x-if="files[index].type.includes('text/')">
+                        <svg class="absolute w-12 h-12 text-gray-400  fill-gray-400 transform top-1/2 -translate-y-2/3">
+                            <g id="xxx-file">
+                            <path class="cls-1" d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z"/>
+                            <path class="cls-1" d="M300,380H100a30,30,0,0,1-30-30V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100V350A30,30,0,0,1,300,380ZM100,30A20,20,0,0,0,80,50V350a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V102.07L247.93,30Z"/>
+                            <path class="cls-1" d="M275,180H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z"/>
+                            <path class="cls-1" d="M275,230H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z"/>
+                            <path class="cls-1" d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z"/>
+                            <path class="cls-1" d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z"/>
+                            </g>
+                        </svg>
+                    </template>
+
+                      <template x-if="files[index].type.includes('java') || files[index].type === ''">
+                          <svg class="absolute w-12 h-12 text-gray-400 fill-gray-400 transform top-1/2 -translate-y-2/3">
+                          <path d="M11.622 24.74s-1.23.748.855.962c2.51.32 3.847.267 6.625-.267a10.02 10.02 0 0 0 1.763.855c-6.25 2.672-14.16-.16-9.244-1.55zm-.8-3.473s-1.336 1.015.748 1.23c2.725.267 4.862.32 8.55-.427a3.26 3.26 0 0 0 1.282.801c-7.534 2.244-15.976.214-10.58-1.603zm14.747 6.09s.908.748-1.015 1.336c-3.58 1.07-15.014 1.39-18.22 0-1.122-.48 1.015-1.175 1.7-1.282.695-.16 1.07-.16 1.07-.16-1.23-.855-8.175 1.763-3.526 2.51 12.77 2.084 23.296-.908 19.983-2.404zM12.2 17.633s-5.824 1.39-2.084 1.87c1.603.214 4.755.16 7.694-.053 2.404-.214 4.81-.64 4.81-.64s-.855.374-1.443.748c-5.93 1.55-17.312.855-14.052-.748 2.778-1.336 5.076-1.175 5.076-1.175zm10.42 5.824c5.984-3.1 3.206-6.09 1.282-5.717-.48.107-.695.214-.695.214s.16-.32.534-.427c3.794-1.336 6.786 4.007-1.23 6.09 0 0 .053-.053.107-.16zm-9.83 8.442c5.77.374 14.587-.214 14.8-2.94 0 0-.427 1.07-4.755 1.87-4.916.908-11.007.8-14.587.214 0 0 .748.64 4.542.855z" />
+                          <path d="M18.996.001s3.313 3.366-3.152 8.442c-5.183 4.114-1.175 6.465 0 9.137-3.046-2.725-5.236-5.13-3.74-7.373C14.294 6.893 20.332 5.3 18.996.001zm-1.7 15.335c1.55 1.763-.427 3.366-.427 3.366s3.954-2.03 2.137-4.542c-1.656-2.404-2.94-3.58 4.007-7.587 0 0-10.953 2.725-5.717 8.763z" />
+                          </svg>
+                      </template>
+
+                      <div class="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-white bg-opacity-50">
+                          <span class="w-full font-bold text-gray-900 truncate"
+                              x-text="files[index].name">Loading</span>
+                          <span class="text-xs text-gray-900" x-text="humanFileSize(files[index].size)">...</span>
+                      </div>
+  
+                      <div class="absolute inset-0 z-40 transition-colors duration-300" @dragenter="dragenter($event)"
+                          @dragleave="fileDropping = null"
+                          :class="{'bg-blue-200 bg-opacity-80': fileDropping == index && fileDragging != index}">
+                      </div>
+                  </div>
+              </template>
+          </div>
+      </template>
+  </div>
+
+    <button id="btn-create-slide" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded">
+        Criar Slide
+    </button>
+</div>
+<div id="codeslide">
+
+
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <script src="https://unpkg.com/create-file-list"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
