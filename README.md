@@ -37,9 +37,9 @@ Telas:
 
 Slides gerados:
 ### Slide 1
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/slide01.jpeg?raw=true)
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/slide01.png?raw=true)
 
 ### Slide 2
-![Slide 2](https://github.com/LuisAraujo/codeToSlide/blob/main/slide02.jpeg?raw=true)
+![Slide 2](https://github.com/LuisAraujo/codeToSlide/blob/main/slide02.png?raw=true)
 
 
