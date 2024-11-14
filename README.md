@@ -25,21 +25,21 @@ def printState()
 
 Telas:
 ### Criando Slide
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screen_create.png?raw=true)
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_create.png?raw=true)
 
 ### PDF Exportado
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/export_pdf.png?raw=true)
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/export_pdf.png?raw=true)
 
 ### Apresentação de Slide On-line
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/slideonline.png?raw=true)
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slideonline.png?raw=true)
 
 
 
 Slides gerados:
 ### Slide 1
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/slide01.png?raw=true)
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide01.png?raw=true)
 
 ### Slide 2
-![Slide 2](https://github.com/LuisAraujo/codeToSlide/blob/main/slide02.png?raw=true)
+![Slide 2](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide02.png?raw=true)
 
 
