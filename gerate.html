@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -19,7 +20,12 @@
 </style>
 </head>
 <div>
+  <div id="overground" class="hidden bg-black absolute w-full h-full z-50 opacity-80"></div>
+  <div id="text-over" class="hidden z-50 absolute p-4 text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+    <button id="btn-back-print"  class="px-4 m-2 text-xl z-90 text-white transition-colors duration-150  rounded-lg focus:shadow-outline  hover:text-gray-200 border">Click to back</button>
+  </div>
   <header id="nav" class="bg-white">
+
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">

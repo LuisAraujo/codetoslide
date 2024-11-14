@@ -12,7 +12,9 @@ var interfaceLoadfile = document.getElementById("interface-loadfile");
 var slide = null;//document.getElementById("slide-0");
 var nav = document.getElementById("nav");
 var btnPrint = document.getElementById("btn-print-slide");
-
+var overground = document.getElementById("overground");
+var textOver = document.getElementById("text-over");
+var btnBackPrint  = document.getElementById("btn-back-print"); 
 btnBackSlide = document.getElementById("btn-back-slide");
 btnNextSlide = document.getElementById("btn-next-slide");
 
@@ -23,10 +25,17 @@ btnNextSlide.addEventListener("click", function() {
     nextSlide();
 });
 
-
 btnPrint.addEventListener("click", function() {
     printSlide();
-})   
+    showOvergound();
+});
+
+btnBackPrint.addEventListener("click", function() {
+    hideOvergound();
+    resizeSildes();
+});
+
+
 
 
 function getHeithSlide(){
@@ -94,7 +103,7 @@ function showSlide(content_slides){
         html += '<div class="description">'+element[1].description+'</div>';
         html += '<div class="container">';
         html+= '<pre><code class="language-py">'+element[1].code+'</code></pre>';
-        html+= '</div><div class="file">'+content_slides[0][0]+'</div></div>';
+        html+= '</div><div class="file"> <i class="fa fa-file"></i> '+content_slides[0][0]+'</div></div>';
 
         codeslide.innerHTML =  codeslide.innerHTML+html;
     });
@@ -200,13 +209,24 @@ function backSlide(){
     window.scrollTo(0, getHeithNav() + getHeithSlide()*currentSlide);
 }
 
+function resizeSildes(){
+    var slides = document.getElementsByClassName("slide");
+    slides.forEach(function(slide){
+        slide.style.height = "calc(100% - 2px)";
+        slide.style.width = "calc(100% - 2px)";
+    })
+}
 
 function printSlide(){
-    var slides = document.getElementsByClassName("codeslide");
-    slide.forEach(function(slide){
-        slide.height = 794 + "px";
-        slide.height = 1114 + "px";
-    })
+    var slides = document.getElementsByClassName("slide");
+   
+    slides.forEach(function(slide){
+        slide.style.height = 794 + "px";
+        slide.style.width = 1114 + "px";
+    });
+
+    slides[0].style.height = 792 + "px";
+    slides[0].style.width = 1114 + "px";
  
     //window.print();
     var element = document.getElementById('codeslide');
@@ -215,10 +235,26 @@ function printSlide(){
         filename:     document.title+'.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 1 },
-        jsPDF:        { unit: 'in', format: 'A4', orientation: 'landscape' }
-      };
+        jsPDF:        { unit: 'in', format: 'A4', orientation: 'landscape' },
+        pdfCallback: resizeSildes
+    };
         // New Promise-based usage:
         html2pdf().set(opt).from(element).save();
 
       // html2pdf(element);
 }
+
+
+function showOvergound(){
+    overground.style.display = "block";
+    textOver.style.display = "block"; 
+    
+}
+
+function hideOvergound(){
+    overground.style.display = "none";
+    textOver.style.display = "none"; 
+}
+
+
+btn-back-print
