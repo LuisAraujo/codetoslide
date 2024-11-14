@@ -137,21 +137,30 @@ code{
     -o-border-radius: 10px;
     position: fixed;
     top: 50%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 #btn-back-slide{
     opacity: 0.2;
     left: 10px;
+     display: none;
 }
 
 #btn-back-slide:hover{
     opacity: 1;
+    display: block;
+    cursor: pointer;
 }
 
 #btn-next-slide{
     opacity: 0.2;
     right: 10px;
+    display: none;
 }
 
 #btn-next-slide:hover{
     opacity: 1;
+    display: block;
+    cursor: pointer;
 }

@@ -19,7 +19,7 @@
 </style>
 </head>
 <div>
-  <header class="bg-white">
+  <header id="nav" class="bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
@@ -30,20 +30,24 @@
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Setting <span aria-hidden="true">&rarr;</span></a>
       </div>
-    </nav>   
+    </nav>
+    <div class="head mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto w-full lg:mx-0">
+       <!-- <h2 class="text-4xl font-bold tracking-tight text-black sm:text-6xl">Code2Slide</h2>-->
+        <p class="mt-0 text-lg leading-8 text-gray-500">A translator of code to slide simple. Use comments in code to create slides for your classes. Look <a href="doc.html">more</a></p>
+      </div>
+    </div>
   </header>
+ 
+<!-- control button -->
   <div id="btn-back-slide" class="btn-controlslide">
     Back
   </div>
   <div id="btn-next-slide"  class="btn-controlslide">
     Next
   </div>
-  <div class="head mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto w-full lg:mx-0">
-     <!-- <h2 class="text-4xl font-bold tracking-tight text-black sm:text-6xl">Code2Slide</h2>-->
-      <p class="mt-0 mb-6 text-lg leading-8 text-gray-500">A Simple tanslate code to slide. Use comments to create slides for your classes. Look <a href="doc.html">more</a></p>
-    </div>
-  </div>
+
+
 <!-- component -->
 <div id="interface-loadfile" class="bg-white p7 rounded w-9/12 h-2/4 mx-auto">
     <div class="w-full p-4 bg-white shadow-md rounded-md">

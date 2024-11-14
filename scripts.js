@@ -19,6 +19,17 @@ btnNextSlide.addEventListener("click", function() {
     nextSlide();
 });
 
+slide = null;//document.getElementById("slide-0");
+nav = document.getElementById("nav");
+
+function getHeithSlide(){
+   return slide.offsetHeight;
+}
+
+function getHeithNav(){
+    return nav.offsetHeight;
+ }
+
 function readFile(file){
     console.log(file);
     var reader = new FileReader();
@@ -79,8 +90,10 @@ function showSlide(content_slides){
 
         codeslide.innerHTML =  codeslide.innerHTML+html;
     });
-
-   hljs.highlightAll();
+    slide = document.getElementById("slide-0");
+    hljs.highlightAll();
+    btnBackSlide.style.display = "block";
+    btnNextSlide.style.display = "block";
 }
 
 
@@ -167,15 +180,14 @@ function dataFileDnD() {
 
 function nextSlide(){
     //todo if total slides
-    //todo obter a altura atual do slide
     currentSlide++;
-    window.scrollTo(0, 144 + 612*currentSlide);
+    window.scrollTo(0, getHeithNav() + getHeithSlide()*currentSlide);
    
 }
 
 function backSlide(){
-     //todo obter a altura atual do slide
+
     if(currentSlide >= 0)
         currentSlide--;
-    window.scrollTo(0, 144 + 612*currentSlide);
+    window.scrollTo(0, getHeithNav() + getHeithSlide()*currentSlide);
 }
