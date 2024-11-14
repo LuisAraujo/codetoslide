@@ -9,9 +9,13 @@ btnCreateSlide.addEventListener("click", function() {
 var currentSlide = -1;
 var codeslide = document.getElementById("codeslide");
 var interfaceLoadfile = document.getElementById("interface-loadfile");
+var slide = null;//document.getElementById("slide-0");
+var nav = document.getElementById("nav");
+var btnPrint = document.getElementById("btn-print-slide");
 
 btnBackSlide = document.getElementById("btn-back-slide");
 btnNextSlide = document.getElementById("btn-next-slide");
+
 btnBackSlide.addEventListener("click", function() {
     backSlide();
 });
@@ -19,8 +23,11 @@ btnNextSlide.addEventListener("click", function() {
     nextSlide();
 });
 
-slide = null;//document.getElementById("slide-0");
-nav = document.getElementById("nav");
+
+btnPrint.addEventListener("click", function() {
+    printSlide();
+})   
+
 
 function getHeithSlide(){
    return slide.offsetHeight;
@@ -73,11 +80,12 @@ function showSlide(content_slides){
     var course =document.getElementById("namecourse").value;
     var author =document.getElementById("nameauthor").value;
     var title = document.getElementById("maintitle").value;
+    document.title = title;
 
-    html += '<div class="institute">Instituto Federal da Bahia</div>';
-    html += '<div class="maintitle">Aula sobre Pardões de Projeto</div>';
-    html += '<div class="author">Luis Gustavo Araujo</div>';
-    html += '<div class="course">Licenciatura em Computação</div></div>';
+    html += '<div class="institute">'+institute+'</div>';
+    html += '<div class="maintitle">'+title+'</div>';
+    html += '<div class="author">'+author+'</div>';
+    html += '<div class="course">'+course+'</div></div>';
     codeslide.innerHTML = html;
 
     content_slides.forEach(function(element, index) {
@@ -190,4 +198,27 @@ function backSlide(){
     if(currentSlide >= 0)
         currentSlide--;
     window.scrollTo(0, getHeithNav() + getHeithSlide()*currentSlide);
+}
+
+
+function printSlide(){
+    var slides = document.getElementsByClassName("codeslide");
+    slide.forEach(function(slide){
+        slide.height = 794 + "px";
+        slide.height = 1114 + "px";
+    })
+ 
+    //window.print();
+    var element = document.getElementById('codeslide');
+    var opt = {
+        margin:       0,
+        filename:     document.title+'.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 1 },
+        jsPDF:        { unit: 'in', format: 'A4', orientation: 'landscape' }
+      };
+        // New Promise-based usage:
+        html2pdf().set(opt).from(element).save();
+
+      // html2pdf(element);
 }

@@ -32,6 +32,8 @@ body {
     height: calc(100% - 2px); 
     width: calc(100% - 2px);
     border: 1px solid #000;
+    /*height: 794px;
+    width: 1114px;*/
 }
 
 
@@ -100,18 +102,22 @@ code{
 
 .maintitle{
     font-family: "NotoSans";
-    font-size: 35px;
+    font-size: 45px;
     font-weight: bold;
     text-align: center;
     margin-left: 40px;
     margin-top: 20px;
     width: 50%;
+    height: 50%;
     margin-left: 25%;
     margin-top: 10%;
+    overflow: hidden;
+
 }
 
 .author{
-    margin-top: 10%;
+    margin-top: 10px;
+    font-size: 20px;
     text-align: center ;
 }
 

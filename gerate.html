@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- and it's easy to individually load additional languages -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
     <link href="style_template.css"  rel="stylesheet" />
@@ -26,6 +26,7 @@
           <span class="sr-only">Your Company</span>
           <img class="h-10 w-auto" src="logo.png" alt="">
         </a>
+        <button id="btn-print-slide"  class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-black rounded-lg focus:shadow-outline hover:bg-white hover:text-black">Print Slide</button>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Setting <span aria-hidden="true">&rarr;</span></a>
@@ -164,7 +165,7 @@
       </template>
   </div>
 
-    <button id="btn-create-slide" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded">
+    <button id="btn-create-slide" class="bg-blue-500 mb-10 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded">
         Criar Slide
     </button>
 </div>
