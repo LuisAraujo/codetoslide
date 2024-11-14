@@ -8,6 +8,7 @@ Sistema que gera slide para aula com trecho de códigos e explicações baseadas
 * Criar modelos (em desenvolvimento)
 * Configuração de estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)  (em desenvolvimento)
 * Salvar slides no localstore (em desenvolvimento)
+* Múltiplos arquivos (em desenvolvimento)
 
 EXEMPLO:
 

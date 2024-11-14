@@ -36,8 +36,6 @@ btnBackPrint.addEventListener("click", function() {
 });
 
 
-
-
 function getHeithSlide(){
    return slide.offsetHeight;
 }
@@ -47,7 +45,7 @@ function getHeithNav(){
  }
 
 function readFile(file){
-    console.log(file);
+ 
     var reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = function (evt) {
@@ -76,6 +74,15 @@ function parseText(namefile, text){
         }
     });
 
+    content_slides.sort(function(a,b){
+        if(a[1].number < b[1].number){
+            return -1;
+        }else{
+            return 1;
+        }
+    });
+
+    console.log(content_slides);
     showSlide (content_slides);
 }
 
@@ -255,6 +262,3 @@ function hideOvergound(){
     overground.style.display = "none";
     textOver.style.display = "none"; 
 }
-
-
-btn-back-print
