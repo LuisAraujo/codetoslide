@@ -5,8 +5,7 @@ Sistema que gera slide para aula com trecho de códigos e explicações baseadas
 * Importar código
 * Gerar slide html
 * Gerar slide PDF
-* Criar modelos (em desenvolvimento)
-* Configuração de estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)  (em desenvolvimento)
+* Configuração de estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)
 * Salvar slides no localstore (em desenvolvimento)
 * Múltiplos arquivos (em desenvolvimento)
 
@@ -24,7 +23,9 @@ def printState()
    print('o seu estado é', mystate)
 ```
 
-Telas:
+## Telas:
+
+
 ### Criando Slide
 ![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_create.png?raw=true)
 
@@ -34,13 +35,17 @@ Telas:
 ### Apresentação de Slide On-line
 ![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slideonline.png?raw=true)
 
+### Configurando cor
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/select_color.png?raw=true)
 
 
-Slides gerados:
-### Slide 1
+### Slide gerado
 ![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide01.png?raw=true)
 
-### Slide 2
 ![Slide 2](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide02.png?raw=true)
 
 
+### Slide com cor modificada
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color.png?raw=true)
+
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color2.png?raw=true)
