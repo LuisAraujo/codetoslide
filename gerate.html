@@ -34,7 +34,7 @@
         <button id="btn-print-slide"  class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-black rounded-lg focus:shadow-outline hover:bg-white hover:text-black">Print Slide</button>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Setting <span aria-hidden="true">&rarr;</span></a>
+        <a id="btn-open-nav"  href="#" class="text-sm font-semibold leading-6 text-gray-900">Setting <span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
     <div class="head mx-auto max-w-7xl px-6 lg:px-8">
@@ -52,7 +52,67 @@
   <div id="btn-next-slide"  class="btn-controlslide">
     Next
   </div>
+  
+<!-- Sidebar -->
+<div id="navsetting" class="fixed hidden top-0 right-0 h-full w-80 bg-white text-black p-6 z-50 shadow-md">
+  <div class="flex items-center space-x-2 mb-10">
+    
+    <h2 class="text-2xl mb-0">Setting</h2>
+    <i id="btn-save-color" class="fa fa-times text-gray-700 cursor-pointer"></i>
+</div>
 
+    <!-- Input para colorTitle -->
+    
+    <div class="flex items-center mb-4">
+        <input type="color" id="inp-colortitle" class="opacity-0 block p-0" onchange="updatePreview('inp-colortitle', 'previewTitle')" /><br>
+        <div id="previewTitle" class="relative right-10 w-8 h-8 ml-4 border-2 border-gray-300 rounded cursor-pointer" style="background-color: #ffffff;" onclick="triggerInput('inp-colortitle')"></div>
+        <label class="mb-2 block relative right-5">Title</label>
+      </div>
+
+    <!-- Input para colorBg -->
+   
+    <div class="flex items-center mb-4">
+        <input type="color" id="inp-colorbg" class="opacity-0 block p-0" onchange="updatePreview('colorbg', 'previewBg')" />
+        <div id="previewBg" class="relative right-10 w-8 h-8 ml-4 border-2 border-gray-300 rounded cursor-pointer" style="background-color: #ffffff;" onclick="triggerInput('inp-colorbg')"></div>
+        <label class="mb-2 block relative right-5">Background</label>
+      </div>
+
+    <!-- Input para colorBgDesc -->
+    
+    <div class="flex items-center mb-4">
+        <input type="color" id="inp-colorbgdesc" class="opacity-0 block p-0" onchange="updatePreview('colorbgdesc', 'previewBgDesc')" />
+        <div id="previewBgDesc" class="relative right-10 w-8 h-8 ml-4 border-2 border-gray-300 rounded cursor-pointer" style="background-color: #ffffff;" onclick="triggerInput('inp-colorbgdesc')"></div>
+        <label class="mb-2 block relative right-5">Bg Description</label>
+      </div>
+
+    <!-- Input para colorBgFile -->
+   
+    <div class="flex items-center mb-4">
+        <input type="color" id="inp-colorbgfile" class="opacity-0 block p-0" onchange="updatePreview('colorbgfile', 'previewBgFile')" />
+        <div id="previewBgFile" class="relative right-10 w-8 h-8 ml-4 border-2 border-gray-300 rounded cursor-pointer" style="background-color: #ffffff;" onclick="triggerInput('inp-colorbgfile')"></div>
+        <label class="mb-2 block relative right-5">Bg File Icon</label>
+    </div>
+
+    <!-- Input para colorFont -->
+   
+    <div class="flex items-center mb-4">
+        <input type="color" id="inp-colorfont" class="opacity-0 block p-0" onchange="updatePreview('colorfont', 'previewFont')" />
+        <div id="previewFont" class="relative right-10 w-8 h-8 ml-4 border-2 border-gray-300 rounded cursor-pointer" style="background-color: #ffffff;" onclick="triggerInput('inp-colorfont')"></div>
+        <label class="mb-2 block relative right-5">Font</label>
+    </div>
+
+    <!-- Input para colorFontFile -->
+    
+    <div class="flex items-center mb-4">
+        
+        <input type="color" id="inp-colorfontfile" class="opacity-0 block p-0" onchange="updatePreview('colorfontfile', 'previewFontFile')" />
+        <div id="previewFontFile" class="relative right-10 w-8 h-8 ml-4 border-2 border-gray-300 rounded cursor-pointer" style="background-color: #ffffff;" onclick="triggerInput('inp-colorfontfile')"></div>
+        <label class="mb-2 block relative right-5">Font File</label>
+      </div>
+
+      
+</div>
+  
 
 <!-- component -->
 <div id="interface-loadfile" class="bg-white p7 rounded w-9/12 h-2/4 mx-auto">

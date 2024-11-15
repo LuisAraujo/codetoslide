@@ -15,8 +15,48 @@ var btnPrint = document.getElementById("btn-print-slide");
 var overground = document.getElementById("overground");
 var textOver = document.getElementById("text-over");
 var btnBackPrint  = document.getElementById("btn-back-print"); 
-btnBackSlide = document.getElementById("btn-back-slide");
-btnNextSlide = document.getElementById("btn-next-slide");
+var btnBackSlide = document.getElementById("btn-back-slide");
+var btnNextSlide = document.getElementById("btn-next-slide");
+var btnSaveColor = document.getElementById("btn-save-color");
+var navsetting = document.getElementById("navsetting");
+var btnOpenNav = document.getElementById("btn-open-nav");
+
+var colorTitle = "#000000";
+var colorBg = "#ffffff";
+var colorBgDesc = "#aaeeff";
+var colorBgFile =  "#55aa55";
+var colorFont = "#000000";
+var colorFontFile = "#000000";
+
+/*colorTitle = "#ffffff";
+colorBg ="#00ffff";
+colorBgDesc = "#ff00ff"
+colorBgFile =  "#0000fff"
+colorFont = "#ffff00"
+colorFontFile = "#000000"
+*/
+
+
+inpcolortitile = document.getElementById("inp-colortitle");
+inpcolorbg = document.getElementById("inp-colorbg");
+inpcolorbgdesc = document.getElementById("inp-colorbgdesc");
+inpcolorbgfile = document.getElementById("inp-colorbgfile");
+inpcolorfont = document.getElementById("inp-colorfont");
+inpcolorfontfile = document.getElementById("inp-colorfontfile");
+
+inpcolortitile.value = colorTitle;
+updatePreview("inp-colortitle","previewTitle");
+inpcolorbg.value = colorBg;
+updatePreview("inp-colorbg","previewBg");
+inpcolorbgdesc.value = colorBgDesc;
+updatePreview("inp-colorbgdesc","previewBgDesc");
+inpcolorbgfile.value = colorBgFile;
+updatePreview("inp-colorbgfile","previewBgFile");
+inpcolorfont.value = colorFont;
+updatePreview("inp-colorfont","previewFont");
+inpcolorfontfile.value = colorFontFile;
+updatePreview("inp-colorfontfile","previewFontFile");
+
 
 btnBackSlide.addEventListener("click", function() {
     backSlide();
@@ -35,6 +75,19 @@ btnBackPrint.addEventListener("click", function() {
     resizeSildes();
 });
 
+btnSaveColor.addEventListener("click", function() {
+    navsetting.style.display = "none";
+    colorTitle = inpcolortitile.value;
+    colorBg = inpcolorbg.value;
+    colorBgDesc = inpcolorbgdesc.value;
+    colorBgFile =  inpcolorbgfile.value;
+    colorFont = inpcolorfont.value;
+    colorFontFile = inpcolorfontfile.value;
+});
+
+btnOpenNav.addEventListener("click", function() {
+    navsetting.style.display="block";
+});
 
 function getHeithSlide(){
    return slide.offsetHeight;
@@ -87,10 +140,11 @@ function parseText(namefile, text){
 }
 
 function showSlide(content_slides){
+   
     console.log(content_slides);
     interfaceLoadfile.style.display = "none";
 
-    var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="logo.png" alt=""></a></div>';
+    var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="screens/logo.png" alt=""></a></div>';
    
     var institute = document.getElementById("nameinstitute").value;
     var course =document.getElementById("namecourse").value;
@@ -118,6 +172,7 @@ function showSlide(content_slides){
     hljs.highlightAll();
     btnBackSlide.style.display = "block";
     btnNextSlide.style.display = "block";
+    applyColors();
 }
 
 
@@ -254,11 +309,49 @@ function printSlide(){
 
 function showOvergound(){
     overground.style.display = "block";
-    textOver.style.display = "block"; 
-    
+    textOver.style.display = "block";
 }
 
 function hideOvergound(){
     overground.style.display = "none";
-    textOver.style.display = "none"; 
+    textOver.style.display = "none";
+}
+
+
+function applyColors(){
+
+    var title =   document.getElementsByClassName("title");
+    title.forEach(function(el){
+        el.style.color = colorTitle;
+    });
+    var slide =  document.getElementsByClassName("slide");
+    slide.forEach(function(el){
+        el.style.color = colorFont;
+        el.style.backgroundColor = colorBg;
+    });
+    var description =   document.getElementsByClassName("description");
+    description.forEach(function(el){
+        el.style.backgroundColor = colorBgDesc;
+    });
+    var file =   document.getElementsByClassName("file");
+    file.forEach(function(el){
+        el.style.backgroundColor =  colorBgFile;
+        el.style.color =  colorFontFile;
+    });
+
+    
+}
+
+
+ // Função para atualizar a prévia da cor
+ function updatePreview(inputId, previewId) {
+    console.log(document.getElementById(inputId).value);
+    const colorInput = document.getElementById(inputId);
+    const colorPreview = document.getElementById(previewId);
+    colorPreview.style.backgroundColor = colorInput.value;
+}
+
+// Função para acionar o input de cor ao clicar na div de prévia
+function triggerInput(inputId) {
+    document.getElementById(inputId).click();
 }
