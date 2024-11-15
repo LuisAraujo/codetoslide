@@ -83,6 +83,7 @@ btnSaveColor.addEventListener("click", function() {
     colorBgFile =  inpcolorbgfile.value;
     colorFont = inpcolorfont.value;
     colorFontFile = inpcolorfontfile.value;
+    applyColors();
 });
 
 btnOpenNav.addEventListener("click", function() {
@@ -115,15 +116,27 @@ function parseText(namefile, text){
     page = -1;
     current_code = "";
     content_slides = [];
+    mode = "";
     arr.forEach(element => {
         if((element[0] == "#") && (element[1] == "#")) {
-            page++;
+            
             line = JSON.parse(element.substring(2));
-            line.code = "";
-            content_slides.push([namefile, line]);
+            if( parseInt(line.number) >= 0){
+                mode = "accept";
+            }else{
+                mode = "ignore";
+            }
+
+            if(mode == "accept"){
+                page++;
+                line.code = "";
+                content_slides.push([namefile, line]);
+            }
 
         }else{
-            content_slides[page][1].code += element+"\n";
+            if(mode == "accept"){
+                content_slides[page][1].code += element+"\n";
+            }
         }
     });
 
@@ -140,12 +153,10 @@ function parseText(namefile, text){
 }
 
 function showSlide(content_slides){
-   
     console.log(content_slides);
     interfaceLoadfile.style.display = "none";
 
     var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="screens/logo.png" alt=""></a></div>';
-   
     var institute = document.getElementById("nameinstitute").value;
     var course =document.getElementById("namecourse").value;
     var author =document.getElementById("nameauthor").value;
