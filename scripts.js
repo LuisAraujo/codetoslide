@@ -57,6 +57,7 @@ updatePreview("inp-colorfont","previewFont");
 inpcolorfontfile.value = colorFontFile;
 updatePreview("inp-colorfontfile","previewFontFile");
 
+getSettings();
 
 btnBackSlide.addEventListener("click", function() {
     backSlide();
@@ -84,6 +85,7 @@ btnSaveColor.addEventListener("click", function() {
     colorFont = inpcolorfont.value;
     colorFontFile = inpcolorfontfile.value;
     applyColors();
+    saveSettings();
 });
 
 btnOpenNav.addEventListener("click", function() {
@@ -366,3 +368,56 @@ function applyColors(){
 function triggerInput(inputId) {
     document.getElementById(inputId).click();
 }
+
+function saveSettings(){
+    if (typeof(Storage) !== "undefined") {
+         localStorage.setItem("colorTitle", colorTitle);
+         localStorage.setItem("colorBg", colorBg);
+         localStorage.setItem("colorBgDesc", colorBgDesc);
+         localStorage.setItem("colorBgFile", colorBgFile);
+         localStorage.setItem("colorFont", colorFont);
+         localStorage.setItem("colorFontFile", colorFontFile);
+      } else {
+         console.log("Sorry! No Web Storage support.");
+      }
+}
+
+function getSettings(){
+
+    if (typeof(Storage) !== "undefined") {
+        if(localStorage.getItem("colorTitle") != null) {
+            colorTitle= localStorage.getItem("colorTitle");
+            inpcolortitile.value = colorTitle;
+            inpcolortitile.dispatchEvent(new Event('change'));
+            //updatePreview(inpcolortitile.id, inpcolortitile)
+        }
+        if(localStorage.getItem("colorBg") != null)  {
+            colorBg= localStorage.getItem("colorBg");
+            inpcolorbg.value = colorBg;
+            inpcolorbg.dispatchEvent(new Event('change'));
+        }
+        if(localStorage.getItem("colorBgDesc") != null)  {
+            colorBgDesc= localStorage.getItem("colorBgDesc");
+            inpcolorbgdesc.value = colorBgDesc;
+            inpcolorbgdesc.dispatchEvent(new Event('change'));
+        }
+        if(localStorage.getItem("colorBgFile") != null)  {
+            colorBgFile= localStorage.getItem("colorBgFile");
+            inpcolorbgfile.value = colorBgFile;
+            inpcolorbgfile.dispatchEvent(new Event('change'));
+        }
+        if(localStorage.getItem("colorFont") != null)  {
+            colorFont= localStorage.getItem("colorFont");
+            inpcolorfont.value = colorFont;
+            inpcolorfont.dispatchEvent(new Event('change'));
+        }
+        if(localStorage.getItem("colorFontFile") != null)  {
+            colorFontFile= localStorage.getItem("colorFontFile");
+            inpcolorfontfile.value = colorFontFile;
+            inpcolorfontfile.dispatchEvent(new Event('change'));
+        }
+         } else {
+         console.log("Sorry! No Web Storage support.");
+      }
+}
+
