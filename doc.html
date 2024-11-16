@@ -32,8 +32,11 @@
   </header>
   <div class="m-10">
     <div class="mb-10">
-      <h2 class="font-bold">Model file</h2>
-      <span >Use this template to create your file. The line with data must have the symbol (##), title, number and description in json format. The slide is printed in numerical order. Use negative number to exclude a part of the code from the generated presentation.</span>
+      <h1 class="font-bold text-xl">Model file</h1>
+      <span>Use this template to create your file. </span>
+      <pre class="mt-10">##{'number':'order', 'title':'you title', 'description'='your description'}
+      </pre>
+      <span>The line with data must have the symbol (##), title, number and description in json format. The slide is printed in numerical order. Use negative number to exclude a part of the code from the generated presentation.</span>
 
       <pre class="mt-10">##{'number':'1', 'title':'changeState', 'description'='This function modifies the user's state (state is a string)'}
 def changeState(state):
@@ -43,6 +46,10 @@ def changeState(state):
 def printState()
     print('o seu estado é', mystate)
 
+</pre>
+
+<span style="margin-top: 5px">Use negative number to exclude a part of the code from the generated presentation.</span>
+<pre>
 ##{'number':'-1'}
 def printState()
     print('o seu estado é', mystate)
