@@ -1,13 +1,13 @@
 # codeToSlide
-Sistema que gera slide para aula com trecho de códigos e explicações baseadas em comentários.
+Sistema para geração de slide para aula com trecho de códigos e explicações baseadas em comentários de código.
 
 # Funcionalidades
-* Importar código
-* Gerar slide html
-* Gerar slide PDF
-* Configuração de estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)
-* Salvar slides no localstore (em desenvolvimento)
-* Múltiplos arquivos (em desenvolvimento)
+* Importa código
+* Gera slide em html
+* Gera slide em PDF
+* Configura estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)
+* Salva slides no localstore 
+* Suporta Múltiplos arquivos 
 
 EXEMPLO:
 

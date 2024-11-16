@@ -1,26 +1,27 @@
-
+//list of files
 myFiles = [];
-arrSlides = [];
-btnCreateSlide = document.getElementById("btn-create-slide");
-btnCreateSlide.addEventListener("click", function() {
-    console.log(myFiles);
-    readFile(myFiles[0])
-});
-var currentSlide = -1;
+//list of slides in json
+var current_slide = -1;
+var content_slides = [];
+
+/* INTERFACE ELEMENTS */
 var codeslide = document.getElementById("codeslide");
 var interfaceLoadfile = document.getElementById("interface-loadfile");
-var slide = null;//document.getElementById("slide-0");
+var slide = null;
 var nav = document.getElementById("nav");
-var btnPrint = document.getElementById("btn-print-slide");
 var overground = document.getElementById("overground");
 var textOver = document.getElementById("text-over");
+
+//buttons
+var btnPrint = document.getElementById("btn-print-slide");
 var btnBackPrint  = document.getElementById("btn-back-print"); 
 var btnBackSlide = document.getElementById("btn-back-slide");
 var btnNextSlide = document.getElementById("btn-next-slide");
 var btnSaveColor = document.getElementById("btn-save-color");
 var navsetting = document.getElementById("navsetting");
 var btnOpenNav = document.getElementById("btn-open-nav");
-
+var btnCreateSlide = document.getElementById("btn-create-slide");
+//color setting
 var colorTitle = "#000000";
 var colorBg = "#ffffff";
 var colorBgDesc = "#aaeeff";
@@ -28,15 +29,7 @@ var colorBgFile =  "#55aa55";
 var colorFont = "#000000";
 var colorFontFile = "#000000";
 
-/*colorTitle = "#ffffff";
-colorBg ="#00ffff";
-colorBgDesc = "#ff00ff"
-colorBgFile =  "#0000fff"
-colorFont = "#ffff00"
-colorFontFile = "#000000"
-*/
-
-
+//input color settings
 inpcolortitile = document.getElementById("inp-colortitle");
 inpcolorbg = document.getElementById("inp-colorbg");
 inpcolorbgdesc = document.getElementById("inp-colorbgdesc");
@@ -44,20 +37,18 @@ inpcolorbgfile = document.getElementById("inp-colorbgfile");
 inpcolorfont = document.getElementById("inp-colorfont");
 inpcolorfontfile = document.getElementById("inp-colorfontfile");
 
-inpcolortitile.value = colorTitle;
-updatePreview("inp-colortitle","previewTitle");
-inpcolorbg.value = colorBg;
-updatePreview("inp-colorbg","previewBg");
-inpcolorbgdesc.value = colorBgDesc;
-updatePreview("inp-colorbgdesc","previewBgDesc");
-inpcolorbgfile.value = colorBgFile;
-updatePreview("inp-colorbgfile","previewBgFile");
-inpcolorfont.value = colorFont;
-updatePreview("inp-colorfont","previewFont");
-inpcolorfontfile.value = colorFontFile;
-updatePreview("inp-colorfontfile","previewFontFile");
+var page = -1;
 
 getSettings();
+
+/* BUTTONS EVENTS*/
+btnCreateSlide.addEventListener("click", function() {
+    console.log(myFiles);
+    var page = -1;
+    myFiles.forEach(function(file) {
+        readFile(file);
+    });
+});
 
 btnBackSlide.addEventListener("click", function() {
     backSlide();
@@ -78,12 +69,7 @@ btnBackPrint.addEventListener("click", function() {
 
 btnSaveColor.addEventListener("click", function() {
     navsetting.style.display = "none";
-    colorTitle = inpcolortitile.value;
-    colorBg = inpcolorbg.value;
-    colorBgDesc = inpcolorbgdesc.value;
-    colorBgFile =  inpcolorbgfile.value;
-    colorFont = inpcolorfont.value;
-    colorFontFile = inpcolorfontfile.value;
+    saveColor();
     applyColors();
     saveSettings();
 });
@@ -92,102 +78,19 @@ btnOpenNav.addEventListener("click", function() {
     navsetting.style.display="block";
 });
 
-function getHeithSlide(){
-   return slide.offsetHeight;
-}
 
-function getHeithNav(){
-    return nav.offsetHeight;
- }
-
+ /* READ FILE */
 function readFile(file){
- 
+
     var reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = function (evt) {
-       //console.log(evt.target.result);
-       parseText(file.name, evt.target.result)
+       parseText(file.name, evt.target.result);
     }
     reader.onerror = function (evt) {
         console.log( "error reading file");
     }
 }
-
-function parseText(namefile, text){
-    var arr = text.split('\n');
-    page = -1;
-    current_code = "";
-    content_slides = [];
-    mode = "";
-    arr.forEach(element => {
-        if((element[0] == "#") && (element[1] == "#")) {
-            
-            line = JSON.parse(element.substring(2));
-            if( parseInt(line.number) >= 0){
-                mode = "accept";
-            }else{
-                mode = "ignore";
-            }
-
-            if(mode == "accept"){
-                page++;
-                line.code = "";
-                content_slides.push([namefile, line]);
-            }
-
-        }else{
-            if(mode == "accept"){
-                content_slides[page][1].code += element+"\n";
-            }
-        }
-    });
-
-    content_slides.sort(function(a,b){
-        if(a[1].number < b[1].number){
-            return -1;
-        }else{
-            return 1;
-        }
-    });
-
-    console.log(content_slides);
-    showSlide (content_slides);
-}
-
-function showSlide(content_slides){
-    console.log(content_slides);
-    interfaceLoadfile.style.display = "none";
-
-    var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="screens/logo.png" alt=""></a></div>';
-    var institute = document.getElementById("nameinstitute").value;
-    var course =document.getElementById("namecourse").value;
-    var author =document.getElementById("nameauthor").value;
-    var title = document.getElementById("maintitle").value;
-    document.title = title;
-
-    html += '<div class="institute">'+institute+'</div>';
-    html += '<div class="maintitle">'+title+'</div>';
-    html += '<div class="author">'+author+'</div>';
-    html += '<div class="course">'+course+'</div></div>';
-    codeslide.innerHTML = html;
-
-    content_slides.forEach(function(element, index) {
-        html = '<div id="slide-'+(index+1)+'"  class="slide"><div class="number-page">'+(index+1)+'</div>';    
-        html += '<div class="title">'+element[1].title+'</div>';
-        html += '<div class="description">'+element[1].description+'</div>';
-        html += '<div class="container">';
-        html+= '<pre><code class="language-py">'+element[1].code+'</code></pre>';
-        html+= '</div><div class="file"> <i class="fa fa-file"></i> '+content_slides[0][0]+'</div></div>';
-
-        codeslide.innerHTML =  codeslide.innerHTML+html;
-    });
-    slide = document.getElementById("slide-0");
-    hljs.highlightAll();
-    btnBackSlide.style.display = "block";
-    btnNextSlide.style.display = "block";
-    applyColors();
-}
-
 
 
 function dataFileDnD() {
@@ -220,8 +123,6 @@ function dataFileDnD() {
             myFiles.splice(this.fileDropping, 0, ...removed);
 
             this.files = createFileList(files);
-        
-
             this.fileDropping = null;
             this.fileDragging = null;
         },
@@ -269,21 +170,107 @@ function dataFileDnD() {
     };
 }
 
+/* parse text form file code */
+function parseText(namefile, text){
+    var arr = text.split('\n');
+    var mode = "";
+    arr.forEach(element => {
+        if((element[0] == "#") && (element[1] == "#")) {
+
+            line = JSON.parse(element.substring(2));
+            if( parseInt(line.number) >= 0){
+                mode = "accept";
+            }else{
+                mode = "ignore";
+            }
+
+            if(mode == "accept"){
+                page++;
+                line.code = "";
+                content_slides.push([namefile, line]);
+            }
+
+        }else{
+            if(mode == "accept"){
+                content_slides[page][1].code += element+"\n";
+            }
+        }
+    });
+
+    content_slides.sort(function(a,b){
+        if(a[1].number < b[1].number){
+            return -1;
+        }else{
+            return 1;
+        }
+    });
+
+    showSlide (content_slides);
+}
+
+/* SHOWING SLIDES */
+function showSlide(content_slides){
+    interfaceLoadfile.style.display = "none";
+
+    var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="screens/logo.png" alt=""></a></div>';
+    var institute = document.getElementById("nameinstitute").value;
+    var course =document.getElementById("namecourse").value;
+    var author =document.getElementById("nameauthor").value;
+    var title = document.getElementById("maintitle").value;
+    document.title = title;
+
+    html += '<div class="institute">'+institute+'</div>';
+    html += '<div class="maintitle">'+title+'</div>';
+    html += '<div class="author">'+author+'</div>';
+    html += '<div class="course">'+course+'</div></div>';
+    codeslide.innerHTML = html;
+
+    content_slides.forEach(function(element, index) {
+        html = '<div id="slide-'+(index+1)+'"  class="slide"><div class="number-page">'+(index+1)+'</div>';    
+        html += '<div class="title">'+element[1].title+'</div>';
+        html += '<div class="description">'+element[1].description+'</div>';
+        html += '<div class="container">';
+        html+= '<pre><code class="language-py">'+element[1].code+'</code></pre>';
+        html+= '</div><div class="file"> <i class="fa fa-file"></i> '+element[0]+'</div></div>';
+
+        codeslide.innerHTML =  codeslide.innerHTML+html;
+    });
+
+    slide = document.getElementById("slide-0");
+    hljs.highlightAll();
+    btnBackSlide.style.display = "block";
+    btnNextSlide.style.display = "block";
+    applyColors();
+}
+
+
+
+
+/* CONTROLING SLIDE */
+
+
+function getHeithSlide(){
+    return slide.offsetHeight;
+ }
+ 
+ function getHeithNav(){
+     return nav.offsetHeight;
+  }
 
 function nextSlide(){
     //todo if total slides
-    currentSlide++;
-    window.scrollTo(0, getHeithNav() + getHeithSlide()*currentSlide);
+    current_slide++;
+    window.scrollTo(0, getHeithNav() + getHeithSlide()*current_slide);
    
 }
 
 function backSlide(){
-
-    if(currentSlide >= 0)
-        currentSlide--;
-    window.scrollTo(0, getHeithNav() + getHeithSlide()*currentSlide);
+    if(current_slide >= 0)
+        current_slide--;
+    window.scrollTo(0, getHeithNav() + getHeithSlide()*current_slide);
 }
 
+/* PRINT SLIDE */
 function resizeSildes(){
     var slides = document.getElementsByClassName("slide");
     slides.forEach(function(slide){
@@ -330,7 +317,7 @@ function hideOvergound(){
     textOver.style.display = "none";
 }
 
-
+/* SETTING */
 function applyColors(){
 
     var title =   document.getElementsByClassName("title");
@@ -351,8 +338,6 @@ function applyColors(){
         el.style.backgroundColor =  colorBgFile;
         el.style.color =  colorFontFile;
     });
-
-    
 }
 
 
@@ -369,6 +354,17 @@ function triggerInput(inputId) {
     document.getElementById(inputId).click();
 }
 
+/* SAVE DATA */
+function saveColor(){
+    colorTitle = inpcolortitile.value;
+    colorBg = inpcolorbg.value;
+    colorBgDesc = inpcolorbgdesc.value;
+    colorBgFile =  inpcolorbgfile.value;
+    colorFont = inpcolorfont.value;
+    colorFontFile = inpcolorfontfile.value;
+}
+
+/* saving settings in localstore*/
 function saveSettings(){
     if (typeof(Storage) !== "undefined") {
          localStorage.setItem("colorTitle", colorTitle);
@@ -381,43 +377,41 @@ function saveSettings(){
          console.log("Sorry! No Web Storage support.");
       }
 }
-
+/* getting settings saved in localstore*/
 function getSettings(){
 
     if (typeof(Storage) !== "undefined") {
-        if(localStorage.getItem("colorTitle") != null) {
+        if(localStorage.getItem("colorTitle") != null) 
             colorTitle= localStorage.getItem("colorTitle");
-            inpcolortitile.value = colorTitle;
-            inpcolortitile.dispatchEvent(new Event('change'));
-            //updatePreview(inpcolortitile.id, inpcolortitile)
-        }
-        if(localStorage.getItem("colorBg") != null)  {
+
+        if(localStorage.getItem("colorBg") != null)  
             colorBg= localStorage.getItem("colorBg");
-            inpcolorbg.value = colorBg;
-            inpcolorbg.dispatchEvent(new Event('change'));
-        }
-        if(localStorage.getItem("colorBgDesc") != null)  {
+
+        if(localStorage.getItem("colorBgDesc") != null)
             colorBgDesc= localStorage.getItem("colorBgDesc");
-            inpcolorbgdesc.value = colorBgDesc;
-            inpcolorbgdesc.dispatchEvent(new Event('change'));
-        }
-        if(localStorage.getItem("colorBgFile") != null)  {
+
+        if(localStorage.getItem("colorBgFile") != null)
             colorBgFile= localStorage.getItem("colorBgFile");
-            inpcolorbgfile.value = colorBgFile;
-            inpcolorbgfile.dispatchEvent(new Event('change'));
-        }
-        if(localStorage.getItem("colorFont") != null)  {
+        if(localStorage.getItem("colorFont") != null)
             colorFont= localStorage.getItem("colorFont");
-            inpcolorfont.value = colorFont;
-            inpcolorfont.dispatchEvent(new Event('change'));
-        }
-        if(localStorage.getItem("colorFontFile") != null)  {
+
+        if(localStorage.getItem("colorFontFile") != null)
             colorFontFile= localStorage.getItem("colorFontFile");
-            inpcolorfontfile.value = colorFontFile;
-            inpcolorfontfile.dispatchEvent(new Event('change'));
-        }
-         } else {
+    }else
          console.log("Sorry! No Web Storage support.");
-      }
+
+    inpcolortitile.value = colorTitle;
+    inpcolortitile.dispatchEvent(new Event('change'));
+    inpcolorbg.value = colorBg;
+    inpcolorbg.dispatchEvent(new Event('change'));
+    inpcolorbgdesc.value = colorBgDesc;
+    inpcolorbgdesc.dispatchEvent(new Event('change'));
+    inpcolorbgfile.value = colorBgFile;
+    inpcolorbgfile.dispatchEvent(new Event('change'));
+    inpcolorfont.value = colorFont;
+    inpcolorfont.dispatchEvent(new Event('change'));
+    inpcolorfontfile.value = colorFontFile;
+    inpcolorfontfile.dispatchEvent(new Event('change'));
+
 }
 
