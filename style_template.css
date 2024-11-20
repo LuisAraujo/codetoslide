@@ -72,6 +72,12 @@ body {
     margin-top: 20px;
 }
 
+.image{
+    height: 400px;
+    margin-left: calc(50% - 200px);
+    margin-top: 20px;
+}
+
 code{
     font-size: 20px;
     width: 90%;

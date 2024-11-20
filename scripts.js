@@ -228,11 +228,19 @@ function showSlide(content_slides){
     content_slides.forEach(function(element, index) {
         html = '<div id="slide-'+(index+1)+'"  class="slide"><div class="number-page">'+(index+1)+'</div>';    
         html += '<div class="title">'+element[1].title+'</div>';
-        html += '<div class="description">'+element[1].description+'</div>';
-        html += '<div class="container">';
-        html+= '<pre><code class="language-py">'+element[1].code+'</code></pre>';
-        html+= '</div><div class="file"> <i class="fa fa-file"></i> '+element[0]+'</div></div>';
+        if((element[1].description != undefined) && (element[1].description.trim()!= ""))
+            html += '<div class="description">'+element[1].description+'</div>';
 
+        if((element[1].code != undefined) && (element[1].code.trim()!= "")){
+            html+= '<div class="container"><pre><code class="language-py">'+element[1].code+'</code></pre></div>';
+            html+= '<div class="file"> <i class="fa fa-file"></i> '+element[0]+'</div>';
+        }
+
+
+        if ((element[1].image != undefined) && (element[1].image.trim())!= "")
+            html += '<img class="image" src="'+element[1].image+'" />';
+
+        html+= '</div>';
         codeslide.innerHTML =  codeslide.innerHTML+html;
     });
 
