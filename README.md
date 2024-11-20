@@ -46,11 +46,13 @@ def printState()
 
 
 ### Adicionando imagem
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screeen_image_desc.png?raw=true)
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_image_desc.png?raw=true)
+
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_image.png?raw=true)
 
 
 ### Apenas texto
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screeen_text.png?raw=true)
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_text.png?raw=true)
 
 
 
