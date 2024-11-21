@@ -155,7 +155,7 @@ function dataFileDnD() {
             files_val = []
             for(let i = 0; i  < e.target.files.length; i++){
                 console.log(e.target.files[i].type)
-                if( (e.target.files[i].name.includes('.txt') || e.target.files[i].name.includes('.py') || e.target.files[i].name.includes('.java') ) ){
+                if( (e.target.files[i].name.includes('.txt') || e.target.files[i].name.includes('.py') || e.target.files[i].name.includes('.java') || e.target.files[i].name.includes('.js') ) ){
                 files_val.push(e.target.files[i]);
                 myFiles.push(e.target.files[i])
                 }
@@ -175,8 +175,20 @@ function parseText(namefile, text){
     var arr = text.split('\n');
     var mode = "";
     arr.forEach(element => {
-        if((element[0] == "#") && (element[1] == "#")) {
-
+        isLine = false;
+        if(namefile.split(".")[1] == "py"){
+            if((element[0] == "#") && (element[1] == "#")) 
+                isLine = true;
+        }else{
+            console.log(element);
+            if((element[0] == "/") && (element[1] == "/") && (element[2] == "#") && (element[3] == "#")){ 
+                element = element.substring(2);
+                isLine = true;
+            }
+        }
+           
+        if(isLine) {
+            console.log(element.substring(2));
             line = JSON.parse(element.substring(2));
             if( parseInt(line.number) >= 0){
                 mode = "accept";
@@ -198,7 +210,7 @@ function parseText(namefile, text){
     });
 
     content_slides.sort(function(a,b){
-        if(a[1].number < b[1].number){
+        if(parseInt(a[1].number) < parseInt(b[1].number)){
             return -1;
         }else{
             return 1;
