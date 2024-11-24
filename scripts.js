@@ -21,6 +21,8 @@ var btnSaveColor = document.getElementById("btn-save-color");
 var navsetting = document.getElementById("navsetting");
 var btnOpenNav = document.getElementById("btn-open-nav");
 var btnCreateSlide = document.getElementById("btn-create-slide");
+var modalcode = document.getElementById("modal-code");
+
 //color setting
 var colorTitle = "#000000";
 var colorBg = "#ffffff";
@@ -78,6 +80,9 @@ btnOpenNav.addEventListener("click", function() {
     navsetting.style.display="block";
 });
 
+modalcode.addEventListener("dblclick", function(e){
+    hideCodeModal();
+});
 
  /* READ FILE */
 function readFile(file){
@@ -176,7 +181,7 @@ function parseText(namefile, text){
     var mode = "";
     arr.forEach(element => {
         isLine = false;
-        if(namefile.split(".")[1] == "py"){
+        if((namefile.split(".")[1] == "py") || (namefile.split(".")[1] == "txt")){
             if((element[0] == "#") && (element[1] == "#")) 
                 isLine = true;
         }else{
@@ -244,7 +249,8 @@ function showSlide(content_slides){
             html += '<div class="description">'+element[1].description+'</div>';
 
         if((element[1].code != undefined) && (element[1].code.trim()!= "")){
-            html+= '<div class="container"><pre><code class="language-py">'+element[1].code+'</code></pre></div>';
+            //TODO: verificar language-py class
+            html+= '<div class="container code"><pre><code class="language-py">'+element[1].code+'</code></pre></div>';
             html+= '<div class="file"> <i class="fa fa-file"></i> '+element[0]+'</div>';
         }
 
@@ -260,11 +266,25 @@ function showSlide(content_slides){
     hljs.highlightAll();
     btnBackSlide.style.display = "block";
     btnNextSlide.style.display = "block";
+    var code = document.getElementsByClassName("code");
+    code.forEach(function(elem){
+        elem.addEventListener("dblclick", showCodeModal);
+    });
     applyColors();
 }
 
 
+function showCodeModal(e){
+    console.log(e);
+    modalcode.style.display = "block";
+    modalcode.innerHTML = "<pre>"+e.target.innerHTML+"</pre>";
+    
+}
 
+function hideCodeModal(e){
+    console.log("out",e)
+   modalcode.style.display = "none";
+}
 
 /* CONTROLING SLIDE */
 

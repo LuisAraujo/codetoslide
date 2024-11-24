@@ -8,6 +8,7 @@ Sistema para geração de slide para aula com trecho de códigos e explicações
 * Configura estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)
 * Salva slides no localstore 
 * Suporta Múltiplos arquivos 
+* Zoom do código (duplo clique)
 
 EXEMPLO:
 
@@ -56,7 +57,11 @@ def printState()
 
 
 
-### Slide com cor modificada
+### Slide com cor personalizada
 ![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color.png?raw=true)
 
 ![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color2.png?raw=true)
+
+
+### Zoom no código
+![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/zoom_code.png?raw=true)
