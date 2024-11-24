@@ -228,7 +228,7 @@ function parseText(namefile, text){
 /* SHOWING SLIDES */
 function showSlide(content_slides){
     interfaceLoadfile.style.display = "none";
-
+   
     var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="screens/logo.png" alt=""></a></div>';
     var institute = document.getElementById("nameinstitute").value;
     var course =document.getElementById("namecourse").value;
@@ -269,6 +269,9 @@ function showSlide(content_slides){
     var code = document.getElementsByClassName("code");
     code.forEach(function(elem){
         elem.addEventListener("dblclick", showCodeModal);
+    });
+    loadImageBG(function(e){
+        document.getElementById("slide-0").style.backgroundImage = "url("+e+")";
     });
     applyColors();
 }
@@ -465,7 +468,7 @@ window.onload = function() {
     loadImageBG(showPreview);
 }
 
-loadImageBG(callback){
+function loadImageBG(callback){
     const savedImage = localStorage.getItem('savedImage');
   if (savedImage) {
     callback(savedImage);
