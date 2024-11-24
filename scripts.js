@@ -22,7 +22,7 @@ var navsetting = document.getElementById("navsetting");
 var btnOpenNav = document.getElementById("btn-open-nav");
 var btnCreateSlide = document.getElementById("btn-create-slide");
 var modalcode = document.getElementById("modal-code");
-
+var btnRemoveBG = document.getElementById("btn-remove-bg");
 //color setting
 var colorTitle = "#000000";
 var colorBg = "#ffffff";
@@ -84,6 +84,10 @@ modalcode.addEventListener("dblclick", function(e){
     hideCodeModal();
 });
 
+btnRemoveBG.addEventListener("click", function() {
+    removeImageBg();
+})    
+
  /* READ FILE */
 function readFile(file){
 
@@ -97,6 +101,10 @@ function readFile(file){
     }
 }
 
+
+function btnRemoveBG(){
+
+}
 
 function dataFileDnD() {
     return {
@@ -229,7 +237,7 @@ function parseText(namefile, text){
 function showSlide(content_slides){
     interfaceLoadfile.style.display = "none";
    
-    var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto" src="screens/logo.png" alt=""></a></div>';
+    var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto opacity-70" src="screens/logo.png" alt=""></a></div>';
     var institute = document.getElementById("nameinstitute").value;
     var course =document.getElementById("namecourse").value;
     var author =document.getElementById("nameauthor").value;
@@ -498,8 +506,12 @@ function saveImageBg() {
   const imgElement = previewDiv.querySelector('img');
   if (imgElement) {
     localStorage.setItem('savedImage', imgElement.src);
-    alert('Imagem salva com sucesso!');
-  } else {
-    alert('Nenhuma imagem para salvar!');
-  }
+  } 
+};
+
+
+// Salvar a imagem no localStorage
+function removeImageBg() {
+    localStorage.removeItem('savedImage');
+    loadImageBG(showPreview);
 };

@@ -41,6 +41,11 @@ body {
     background-repeat: no-repeat;
 }
 
+#btn-remove-bg{
+    position: relative;
+    top: 10px;
+    background-color: #fff;
+}
 .description{
     font-family: "NotoSans";
     width: calc(100% - 80px);
