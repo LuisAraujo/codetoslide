@@ -9,6 +9,7 @@ Sistema para geração de slide para aula com trecho de códigos e explicações
 * Salva slides no localstore 
 * Suporta Múltiplos arquivos 
 * Zoom do código (duplo clique)
+* Adiciona background no primeiro slide
 
 EXEMPLO:
 
@@ -28,40 +29,43 @@ def printState()
 
 
 ### Criando Slide
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_create.png?raw=true)
+![Criando slide](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_create.png?raw=true)
 
 ### PDF Exportado
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/export_pdf.png?raw=true)
+![Exportando slide](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/export_pdf.png?raw=true)
 
 ### Apresentação de Slide On-line
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slideonline.png?raw=true)
-
-### Configurando cor
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/select_color.png?raw=true)
+![Apresentando slide on-line](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slideonline.png?raw=true)
 
 
 ### Slide gerado
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide01.png?raw=true)
+![Gerando slide](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide01.png?raw=true)
 
 ![Slide 2](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide02.png?raw=true)
 
 
 ### Adicionando imagem
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_image_desc.png?raw=true)
+![Adicionando imagem](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_image_desc.png?raw=true)
 
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_image.png?raw=true)
+![Adicionando imagem](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_image.png?raw=true)
 
 
 ### Apenas texto
 ![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_text.png?raw=true)
 
+### Configurando cor
+![Configurando a cor](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/select_color.png?raw=true)
 
 
 ### Slide com cor personalizada
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color.png?raw=true)
+![Slide com cor presonalizada](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color.png?raw=true)
 
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color2.png?raw=true)
+![Slide com cor presonalizada](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_color2.png?raw=true)
 
 
 ### Zoom no código
-![Slide 1](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/zoom_code.png?raw=true)
+![Zoom no código](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/zoom_code.png?raw=true)
+
+
+### Slide com background
+![Slide com background](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_bg.png?raw=true)
