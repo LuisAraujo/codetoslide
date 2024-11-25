@@ -23,6 +23,8 @@ var btnOpenNav = document.getElementById("btn-open-nav");
 var btnCreateSlide = document.getElementById("btn-create-slide");
 var modalcode = document.getElementById("modal-code");
 var btnRemoveBG = document.getElementById("btn-remove-bg");
+var btnPrintSlide = document.getElementById("btn-print-slide");
+
 //color setting
 var colorTitle = "#000000";
 var colorBg = "#ffffff";
@@ -236,7 +238,8 @@ function parseText(namefile, text){
 /* SHOWING SLIDES */
 function showSlide(content_slides){
     interfaceLoadfile.style.display = "none";
-   
+    btnPrintSlide.classList.remove("hidden");
+
     var html = '<div id="slide-0" class="slide cover"><div class="flex lg:flex-1"><a href="#" class="-m-1.5 p-1.5"><span class="sr-only">Code to Slide</span><img class="h-10 w-auto opacity-70" src="screens/logo.png" alt=""></a></div>';
     var institute = document.getElementById("nameinstitute").value;
     var course =document.getElementById("namecourse").value;
@@ -398,6 +401,7 @@ function applyColors(){
     const colorInput = document.getElementById(inputId);
     const colorPreview = document.getElementById(previewId);
     colorPreview.style.backgroundColor = colorInput.value;
+    
 }
 
 // Função para acionar o input de cor ao clicar na div de prévia
@@ -451,6 +455,7 @@ function getSettings(){
     }else
          console.log("Sorry! No Web Storage support.");
 
+    //insert color 
     inpcolortitile.value = colorTitle;
     inpcolortitile.dispatchEvent(new Event('change'));
     inpcolorbg.value = colorBg;
@@ -478,9 +483,9 @@ window.onload = function() {
 
 function loadImageBG(callback){
     const savedImage = localStorage.getItem('savedImage');
-  if (savedImage) {
+  //if (savedImage) {
     callback(savedImage);
-  }
+ // }
 
 }
 // Mostrar preview da imagem carregada
