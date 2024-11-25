@@ -14,8 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- and it's easy to individually load additional languages -->
-    <link href="style_template.css"  rel="stylesheet" />
-
+    <link href="css/style_template.css"  rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </style>
 </head>
 <body>
@@ -36,7 +36,7 @@
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">Your Company</span>
-          <img class="h-10 w-auto" src="screens/logo.png" alt="">
+          <img class="h-10 w-auto" src="images/logo.png" alt="">
         </a>
         <button id="btn-print-slide"  class="h-8 px-4 m-2 text-sm hidden text-indigo-100 transition-colors duration-150 bg-black rounded-lg focus:shadow-outline hover:bg-white hover:text-black">Print Slide</button>
       </div>
@@ -268,6 +268,13 @@
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <script src="https://unpkg.com/create-file-list"></script>
-  <script src="scripts.js"></script>
+  <script src="js/navSlide.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/printSlide.js"></script>
+  <script src="js/saveBackground.js"></script>
+  <script src="js/setSettings.js"></script>
+  <script src="js/showSlide.js"></script>
+  <script src="js/updateFile.js"></script>
+  <script src="js/mainGerate.js"></script>
 </body>
 </html>

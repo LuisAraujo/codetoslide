@@ -28,7 +28,7 @@ def changeState(state):
 def printState()
    print('o seu estado é', mystate)
 ```
-## Parametros
+## Parâmetros
 
 * **title**: define o título do slide
 * **description**: define a descrição (texto em uma caixa com background)
