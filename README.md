@@ -5,7 +5,11 @@ Sistema para geração de slide para aula com trecho de códigos e explicações
 * Importa código
 * Gera slide em html
 * Gera slide em PDF
-* Configura estilo (cor de background, cor de fonte, tipo de fonte, tamanho da fonte)
+* Configura estilo
+   * cor de background
+   * cor de fonte
+   * tipo de fonte
+   * tamanho da fonte
 * Salva slides no localstore 
 * Suporta Múltiplos arquivos 
 * Zoom do código (duplo clique)
@@ -24,6 +28,13 @@ def changeState(state):
 def printState()
    print('o seu estado é', mystate)
 ```
+## Parametros
+
+title: define o título do slide
+description: define a descrição (texto em uma caixa com background)
+number: define a ordem que o slide irá ser exibido (-1 exclui o trecho)
+image: define a url de uma imagem no slide
+
 
 ## Telas:
 
