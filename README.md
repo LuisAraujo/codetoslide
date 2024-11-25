@@ -30,10 +30,10 @@ def printState()
 ```
 ## Parametros
 
-title: define o título do slide
-description: define a descrição (texto em uma caixa com background)
-number: define a ordem que o slide irá ser exibido (-1 exclui o trecho)
-image: define a url de uma imagem no slide
+* **title**: define o título do slide
+* **description**: define a descrição (texto em uma caixa com background)
+* **number**: define a ordem que o slide irá ser exibido (-1 exclui o trecho)
+* **image**: define a url de uma imagem no slide
 
 
 ## Telas:
