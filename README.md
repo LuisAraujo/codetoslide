@@ -1,7 +1,7 @@
 # codeToSlide
 Sistema para geração de slide para aula com trecho de códigos e explicações baseadas em comentários de código.
 
-# Funcionalidades
+# Funcionalidades:
 * Importa código
 * Gera slide em html
 * Gera slide em PDF
@@ -14,6 +14,8 @@ Sistema para geração de slide para aula com trecho de códigos e explicações
 * Suporta Múltiplos arquivos 
 * Zoom do código (duplo clique)
 * Adiciona background no primeiro slide
+* Criar tabela
+* Exibir Face Recording
 
 EXEMPLO:
 
@@ -35,6 +37,8 @@ def printState()
 * **number**: define a ordem que o slide irá ser exibido (-1 exclui o trecho)
 * **image**: define a url de uma imagem no slide
 
+* **table**: conteúdo da tabela separado por | 
+* **cols**: número de colunas da tabela
 
 ## Telas:
 
@@ -80,3 +84,12 @@ def printState()
 
 ### Slide com background
 ![Slide com background](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/slide_bg.png?raw=true)
+
+
+### Tabela
+![Slide com background](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_table.png?raw=true)
+
+
+### Face Recording (em desenvolvimento)
+![Slide com background](https://github.com/LuisAraujo/codeToSlide/blob/main/screens/screen_recording.png?raw=true)
+
