@@ -94,3 +94,25 @@ btnRemoveBG.addEventListener("click", function() {
 
 
 
+var video = document.querySelector("#video");
+var mycanv = document.querySelector("#mycanv");
+conxt = mycanv.getContext("2d");
+startVideo();
+window.requestAnimationFrame(loopDraw);
+
+function loopDraw(){
+    conxt.drawImage(video, 0, 0, 200, 200);
+    window.requestAnimationFrame(loopDraw)
+}
+function startVideo(){
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+            })
+            .catch(function (err0r) {
+                console.log("Something went wrong!");
+                console.log(err0r); 
+            });
+        }
+}

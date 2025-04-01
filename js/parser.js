@@ -1,15 +1,15 @@
 function parseText(namefile, text){
     var arr = text.split('\n');
+    var extension = namefile.split(".")[1];
     var mode = "";
     arr.forEach(element => {
         isLine = false;
-        if((namefile.split(".")[1] == "py") || (namefile.split(".")[1] == "txt")){
+        if((extension == "py") || (extension == "txt")){
             if((element[0] == "#") && (element[1] == "#")) 
                 isLine = true;
         }else{
             console.log(element);
-            if((element[0] == "/") && (element[1] == "/") && (element[2] == "#") && (element[3] == "#")){ 
-                element = element.substring(2);
+            if((element[0] == "/") && (element[1] == "/") ){ 
                 isLine = true;
             }
         }
@@ -31,6 +31,7 @@ function parseText(namefile, text){
 
         }else{
             if(mode == "accept"){
+                element = element.replaceAll("&", "&#38;");
                 content_slides[page][1].code += element+"\n";
             }
         }
@@ -44,5 +45,5 @@ function parseText(namefile, text){
         }
     });
 
-    showSlide (content_slides);
+    showSlide (content_slides, extension);
 }

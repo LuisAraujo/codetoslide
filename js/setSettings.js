@@ -18,6 +18,11 @@ function applyColors(){
         el.style.backgroundColor =  colorBgFile;
         el.style.color =  colorFontFile;
     });
+
+    var file =   document.getElementsByClassName("head");
+    file.forEach(function(el){
+        el.style.backgroundColor =  colorBgDesc;
+    });
 }
 
 

@@ -72,8 +72,8 @@ function dataFileDnD() {
             console.log(e.target.files)
             files_val = []
             for(let i = 0; i  < e.target.files.length; i++){
-                console.log(e.target.files[i].type)
-                if( (e.target.files[i].name.includes('.txt') || e.target.files[i].name.includes('.py') || e.target.files[i].name.includes('.java') || e.target.files[i].name.includes('.js') ) ){
+                console.log(e.target.files[i])
+                if( (e.target.files[i].name.includes('.txt') || e.target.files[i].name.includes('.py') || e.target.files[i].name.includes('.java') || e.target.files[i].name.includes('.js') || e.target.files[i].name.includes('.c') ) ){
                 files_val.push(e.target.files[i]);
                 myFiles.push(e.target.files[i])
                 }
